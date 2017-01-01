@@ -46,17 +46,27 @@ dependencies {
 How to use :
 --------
 ```java
-DateMonthDialog dateMonthDialog = new DateMonthDialog(this)
-                .setPositiveButton(new DateMonthDialogListener() {
-                    @Override
-                    public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {
+ new RackMonthPicker(this)
+         .setPositiveButton(new DateMonthDialogListener() {
+               @Override
+               public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {
 
-                    }
-                })
-                .setNegativeButton(new OnCancelMonthDialogListener() {
-                    @Override
-                    public void onCancel(AlertDialog dialog) {
-                        dialog.dismiss();
-                    }
-                });
+               }
+          })
+          .setNegativeButton(new OnCancelMonthDialogListener() {
+                @Override
+                public void onCancel(AlertDialog dialog) {
+
+                }
+          }).show();
+```
+adding .setPositiveText(String text) or .setNegativeText(String Text) to change the text of a button.
+
+Once the dialog is shown, you can dismiss it:
+```java
+RackMonthPicker rackMonthPicker RackMonthPicker(this)
+            .......
+            .show();
+
+rackMonthPicker.dismiss();
 ```

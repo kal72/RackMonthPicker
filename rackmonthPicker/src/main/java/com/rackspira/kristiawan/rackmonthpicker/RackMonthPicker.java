@@ -22,10 +22,10 @@ import java.util.List;
  * Created by kristiawan on 31/12/16.
  */
 
-public class DateMonthDialog {
+public class RackMonthPicker {
 
     private AlertDialog mAlertDialog;
-    private DateMonthDialog.Builder builder;
+    private RackMonthPicker.Builder builder;
     private Context context;
     private Button mPositiveButton;
     private Button mNegativeButton;
@@ -34,7 +34,7 @@ public class DateMonthDialog {
     private List<MonthRadioButton> monthRadioButtonList;
     private boolean isBuild = false;
 
-    public DateMonthDialog(Context context) {
+    public RackMonthPicker(Context context) {
         this.context = context;
         monthRadioButtonList = new ArrayList<>();
         builder = new Builder();
@@ -49,24 +49,24 @@ public class DateMonthDialog {
         }
     }
 
-    public DateMonthDialog setPositiveButton(DateMonthDialogListener dateMonthDialogListener) {
+    public RackMonthPicker setPositiveButton(DateMonthDialogListener dateMonthDialogListener) {
         this.dateMonthDialogListener = dateMonthDialogListener;
         mPositiveButton.setOnClickListener(builder.positiveButtonClick());
         return this;
     }
 
-    public DateMonthDialog setNegativeButton(OnCancelMonthDialogListener onCancelMonthDialogListener) {
+    public RackMonthPicker setNegativeButton(OnCancelMonthDialogListener onCancelMonthDialogListener) {
         this.onCancelMonthDialogListener = onCancelMonthDialogListener;
         mNegativeButton.setOnClickListener(builder.negativeButtonClick());
         return this;
     }
 
-    public DateMonthDialog setPositiveText(String text){
+    public RackMonthPicker setPositiveText(String text){
         mPositiveButton.setText(text);
         return this;
     }
 
-    public DateMonthDialog setNegativeText(String text){
+    public RackMonthPicker setNegativeText(String text){
         mNegativeButton.setText(text);
         return this;
     }
