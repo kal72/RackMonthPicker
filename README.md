@@ -1,2 +1,62 @@
 # RackMonthPicker
 android library dialog month picker
+
+[![](https://jitpack.io/v/lutvie72/rackmonthpicker.svg)](https://jitpack.io/#lutvie72/rackmonthpicker)
+
+Download
+--------
+Download via Maven:
+
+Add the JitPack repository to your build file
+```xml
+<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+```
+Add the dependency
+```xml
+<dependency>
+	    <groupId>com.github.lutvie72</groupId>
+	    <artifactId>rackmonthpicker</artifactId>
+	    <version>1.0</version>
+</dependency>
+```
+
+via Gradle:
+
+Add it in your root build.gradle at the end of repositories
+```groovy
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+Add the dependency
+```groovy
+dependencies {
+	        compile 'com.github.lutvie72:rackmonthpicker:1.0'
+	}
+```
+
+How to use :
+--------
+```java
+DateMonthDialog dateMonthDialog = new DateMonthDialog(this)
+                .setPositiveButton(new DateMonthDialogListener() {
+                    @Override
+                    public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {
+
+                    }
+                })
+                .setNegativeButton(new OnCancelMonthDialogListener() {
+                    @Override
+                    public void onCancel(AlertDialog dialog) {
+                        dialog.dismiss();
+                    }
+                });
+```
