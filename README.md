@@ -3,6 +3,8 @@ android library dialog month picker
 
 [![](https://jitpack.io/v/lutvie72/rackmonthpicker.svg)](https://jitpack.io/#lutvie72/rackmonthpicker)
 
+![Screenshots](https://raw.githubusercontent.com/lutvie72/RackMonthPicker/master/photo_2017-01-02_08-51-23.jpg)
+
 Download
 --------
 Download via Maven:
