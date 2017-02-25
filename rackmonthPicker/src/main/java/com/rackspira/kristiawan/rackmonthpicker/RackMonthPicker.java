@@ -111,6 +111,7 @@ public class RackMonthPicker {
                 radioButton.setMonth(MonthOfYear.getMonth(i - 1));
                 radioButton.setButtonDrawable(MonthOfYear.getIcons(i - 1));
                 if (i == 1) {
+                    monthRadioButton = radioButton;
                     radioButton.setChecked(true);
                     mTitleView.setText(MonthOfYear.getMonth(i - 1) + ", " + year);
                 }
@@ -124,7 +125,7 @@ public class RackMonthPicker {
                 }
 
                 radioButton.setMonthListener(this, radioButton);
-                monthRadioButton = radioButton;
+//                monthRadioButton = radioButton;
                 monthRadioButtonList.add(radioButton);
                 gridLayout.addView(radioButton);
             }
@@ -190,6 +191,7 @@ public class RackMonthPicker {
         @Override
         public void monthClick(MonthRadioButton objectMonth) {
             mTitleView.setText(objectMonth.getMonth() + ", " + year);
+            monthRadioButton = objectMonth;
             for (MonthRadioButton radioButton : monthRadioButtonList) {
                 if (radioButton != objectMonth) {
                     radioButton.setChecked(false);

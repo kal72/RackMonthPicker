@@ -21,7 +21,7 @@ public class MainActivity extends Activity {
                 .setPositiveButton(new DateMonthDialogListener() {
                     @Override
                     public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {
-
+                        System.out.println(month);
                     }
                 })
                 .setNegativeButton(new OnCancelMonthDialogListener() {
@@ -30,20 +30,19 @@ public class MainActivity extends Activity {
                         dialog.dismiss();
                     }
                 });
-
-        new RackMonthPicker(this)
-                .setPositiveButton(new DateMonthDialogListener() {
-                    @Override
-                    public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {
-
-                    }
-                })
-                .setNegativeButton(new OnCancelMonthDialogListener() {
-                    @Override
-                    public void onCancel(AlertDialog dialog) {
-
-                    }
-                }).show();
+//        new RackMonthPicker(this)
+//                .setPositiveButton(new DateMonthDialogListener() {
+//                    @Override
+//                    public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {
+//
+//                    }
+//                })
+//                .setNegativeButton(new OnCancelMonthDialogListener() {
+//                    @Override
+//                    public void onCancel(AlertDialog dialog) {
+//
+//                    }
+//                }).show();
 
         Button button = (Button)findViewById(R.id.btn_show);
         button.setOnClickListener(new View.OnClickListener() {
