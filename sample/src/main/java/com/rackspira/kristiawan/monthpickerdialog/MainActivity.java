@@ -10,6 +10,8 @@ import com.rackspira.kristiawan.rackmonthpicker.RackMonthPicker;
 import com.rackspira.kristiawan.rackmonthpicker.listener.DateMonthDialogListener;
 import com.rackspira.kristiawan.rackmonthpicker.listener.OnCancelMonthDialogListener;
 
+import java.util.Locale;
+
 public class MainActivity extends Activity {
 
     @Override
@@ -18,10 +20,15 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         final RackMonthPicker rackMonthPicker = new RackMonthPicker(this)
+                .setLocale(Locale.JAPAN)
                 .setPositiveButton(new DateMonthDialogListener() {
                     @Override
                     public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {
                         System.out.println(month);
+                        System.out.println(startDate);
+                        System.out.println(endDate);
+                        System.out.println(year);
+                        System.out.println(monthLabel);
                     }
                 })
                 .setNegativeButton(new OnCancelMonthDialogListener() {

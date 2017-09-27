@@ -3,20 +3,16 @@ package com.rackspira.kristiawan.rackmonthpicker;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.GridLayout;
 import android.widget.TextView;
-
 import com.rackspira.kristiawan.rackmonthpicker.listener.DateMonthDialogListener;
-import com.rackspira.kristiawan.rackmonthpicker.listener.MonthButtonListener;
 import com.rackspira.kristiawan.rackmonthpicker.listener.OnCancelMonthDialogListener;
-import com.rackspira.kristiawan.rackmonthpicker.util.MonthOfYear;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by kristiawan on 31/12/16.
@@ -31,12 +27,10 @@ public class RackMonthPicker {
     private Button mNegativeButton;
     private DateMonthDialogListener dateMonthDialogListener;
     private OnCancelMonthDialogListener onCancelMonthDialogListener;
-    private List<MonthRadioButton> monthRadioButtonList;
     private boolean isBuild = false;
 
     public RackMonthPicker(Context context) {
         this.context = context;
-        monthRadioButtonList = new ArrayList<>();
         builder = new Builder();
     }
 
@@ -61,13 +55,18 @@ public class RackMonthPicker {
         return this;
     }
 
-    public RackMonthPicker setPositiveText(String text){
+    public RackMonthPicker setPositiveText(String text) {
         mPositiveButton.setText(text);
         return this;
     }
 
-    public RackMonthPicker setNegativeText(String text){
+    public RackMonthPicker setNegativeText(String text) {
         mNegativeButton.setText(text);
+        return this;
+    }
+
+    public RackMonthPicker setLocale(Locale locale) {
+        builder.setLocale(locale);
         return this;
     }
 
@@ -75,9 +74,9 @@ public class RackMonthPicker {
         mAlertDialog.dismiss();
     }
 
-    private class Builder implements MonthButtonListener {
+    private class Builder implements MonthAdapter.OnSelectedListener{
 
-        private MonthRadioButton monthRadioButton;
+        private MonthAdapter monthAdapter;
         private TextView mTitleView;
         private TextView mYear;
         private int year = 2017;
@@ -87,7 +86,7 @@ public class RackMonthPicker {
         private Builder() {
             alertBuilder = new AlertDialog.Builder(context);
 
-            contentView = LayoutInflater.from(context).inflate(R.layout.date_month_dialog_view, null);
+            contentView = LayoutInflater.from(context).inflate(R.layout.dialog_month_picker, null);
             contentView.setFocusable(true);
             contentView.setFocusableInTouchMode(true);
 
@@ -104,31 +103,15 @@ public class RackMonthPicker {
             mPositiveButton = (Button) contentView.findViewById(R.id.btn_p);
             mNegativeButton = (Button) contentView.findViewById(R.id.btn_n);
 
-            GridLayout gridLayout = (GridLayout) contentView.findViewById(R.id.radiogroup);
-            for (int i = 1; i < 13; i++) {
-                MonthRadioButton radioButton = new MonthRadioButton(context);
-                radioButton.setIdMonth(i);
-                radioButton.setMonth(MonthOfYear.getMonth(i - 1));
-                radioButton.setButtonDrawable(MonthOfYear.getIcons(i - 1));
-                if (i == 1) {
-                    monthRadioButton = radioButton;
-                    radioButton.setChecked(true);
-                    mTitleView.setText(MonthOfYear.getMonth(i - 1) + ", " + year);
-                }
+             monthAdapter = new MonthAdapter(context, this);
+            RecyclerView recyclerView = (RecyclerView) contentView.findViewById(R.id.recycler_view);
+            recyclerView.setLayoutManager(new GridLayoutManager(context, 4));
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setAdapter(monthAdapter);
+        }
 
-                if (i == 2) {
-                    radioButton.setEndDate(28);
-                }
-
-                if (i == 4 || i == 6 || i == 9 || i == 11) {
-                    radioButton.setEndDate(30);
-                }
-
-                radioButton.setMonthListener(this, radioButton);
-//                monthRadioButton = radioButton;
-                monthRadioButtonList.add(radioButton);
-                gridLayout.addView(radioButton);
-            }
+        public void setLocale(Locale locale) {
+            monthAdapter.setLocale(locale);
         }
 
         public void build() {
@@ -148,7 +131,7 @@ public class RackMonthPicker {
                 public void onClick(View view) {
                     year++;
                     mYear.setText(year + "");
-                    mTitleView.setText(monthRadioButton.getMonth() + ", " + year);
+                    mTitleView.setText(monthAdapter.getMonth() + ", " + year);
                 }
             };
         }
@@ -159,7 +142,7 @@ public class RackMonthPicker {
                 public void onClick(View view) {
                     year--;
                     mYear.setText(year + "");
-                    mTitleView.setText(monthRadioButton.getMonth() + ", " + year);
+                    mTitleView.setText(monthAdapter.getMonth() + ", " + year);
                 }
             };
         }
@@ -169,9 +152,9 @@ public class RackMonthPicker {
                 @Override
                 public void onClick(View view) {
                     dateMonthDialogListener.onDateMonth(
-                            monthRadioButton.getIdMonth(),
-                            monthRadioButton.getStartDate(),
-                            monthRadioButton.getEndDate(),
+                            monthAdapter.getMonth(),
+                            monthAdapter.getStartDate(),
+                            monthAdapter.getEndDate(),
                             year, mTitleView.getText().toString());
 
                     mAlertDialog.dismiss();
@@ -189,14 +172,8 @@ public class RackMonthPicker {
         }
 
         @Override
-        public void monthClick(MonthRadioButton objectMonth) {
-            mTitleView.setText(objectMonth.getMonth() + ", " + year);
-            monthRadioButton = objectMonth;
-            for (MonthRadioButton radioButton : monthRadioButtonList) {
-                if (radioButton != objectMonth) {
-                    radioButton.setChecked(false);
-                }
-            }
+        public void onContentSelected() {
+            mTitleView.setText(monthAdapter.getMonth() + ", " + year);
         }
     }
 }
