@@ -68,7 +68,7 @@ adding .setLocale(Locale.ENGLISH) to change language.
 
 Once the dialog is shown, you can dismiss it:
 ```java
-RackMonthPicker rackMonthPicker RackMonthPicker(this)
+RackMonthPicker rackMonthPicker = new RackMonthPicker(this)
             .......
             .show();
 
