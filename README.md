@@ -49,6 +49,7 @@ How to use :
 --------
 ```java
  new RackMonthPicker(this)
+ 	 .setLocale(Locale.ENGLISH)
          .setPositiveButton(new DateMonthDialogListener() {
                @Override
                public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {
@@ -63,6 +64,7 @@ How to use :
           }).show();
 ```
 adding .setPositiveText(String text) or .setNegativeText(String Text) to change the text of a button.
+adding .setLocale(Locale.ENGLISH) to change language.
 
 Once the dialog is shown, you can dismiss it:
 ```java
