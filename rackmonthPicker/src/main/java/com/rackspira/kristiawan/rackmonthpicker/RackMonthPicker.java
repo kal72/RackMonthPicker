@@ -10,8 +10,12 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.rackspira.kristiawan.rackmonthpicker.listener.DateMonthDialogListener;
 import com.rackspira.kristiawan.rackmonthpicker.listener.OnCancelMonthDialogListener;
+
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -74,7 +78,7 @@ public class RackMonthPicker {
         mAlertDialog.dismiss();
     }
 
-    private class Builder implements MonthAdapter.OnSelectedListener{
+    private class Builder implements MonthAdapter.OnSelectedListener {
 
         private MonthAdapter monthAdapter;
         private TextView mTitleView;
@@ -103,7 +107,12 @@ public class RackMonthPicker {
             mPositiveButton = (Button) contentView.findViewById(R.id.btn_p);
             mNegativeButton = (Button) contentView.findViewById(R.id.btn_n);
 
-             monthAdapter = new MonthAdapter(context, this);
+            Date date = new Date();
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            year = cal.get(Calendar.YEAR);
+
+            monthAdapter = new MonthAdapter(context, this);
             RecyclerView recyclerView = (RecyclerView) contentView.findViewById(R.id.recycler_view);
             recyclerView.setLayoutManager(new GridLayoutManager(context, 4));
             recyclerView.setHasFixedSize(true);

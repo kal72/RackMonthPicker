@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         final RackMonthPicker rackMonthPicker = new RackMonthPicker(this)
-                .setLocale(Locale.JAPAN)
+                .setLocale(Locale.ENGLISH)
                 .setPositiveButton(new DateMonthDialogListener() {
                     @Override
                     public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {

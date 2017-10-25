@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.text.DateFormatSymbols;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -26,6 +27,11 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.MonthHolder>
         this.context = context;
         this.listener = listener;
         months = new DateFormatSymbols(Locale.ENGLISH).getShortMonths();
+
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        selectedItem = cal.get(Calendar.MONTH);
     }
 
     @Override
@@ -85,7 +91,7 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.MonthHolder>
         }
     }
 
-    interface OnSelectedListener{
+    interface OnSelectedListener {
         void onContentSelected();
     }
 }
