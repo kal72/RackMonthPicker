@@ -1,10 +1,18 @@
 package com.rackspira.kristiawan.rackmonthpicker;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.StateListDrawable;
+import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.text.DateFormatSymbols;
@@ -20,28 +28,33 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.MonthHolder>
 
     private String[] months = new String[0];
     private OnSelectedListener listener;
-    private int selectedItem = 0;
+    private int selectedItem = -1;
     private Context context;
+    private int color;
 
     public MonthAdapter(Context context, OnSelectedListener listener) {
         this.context = context;
         this.listener = listener;
         months = new DateFormatSymbols(Locale.ENGLISH).getShortMonths();
 
-        Date date = new Date();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        selectedItem = cal.get(Calendar.MONTH);
+        if (selectedItem == -1) {
+            Date date = new Date();
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            selectedItem = cal.get(Calendar.MONTH);
+        }
     }
 
     @Override
     public MonthHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new MonthHolder(LayoutInflater.from(context).inflate(R.layout.item_view_month, parent, false));
+        MonthHolder monthHolder = new MonthHolder(LayoutInflater.from(context).inflate(R.layout.item_view_month, parent, false));
+        return monthHolder;
     }
 
     @Override
     public void onBindViewHolder(MonthHolder holder, int position) {
         holder.textViewMonth.setText(months[position]);
+        holder.textViewMonth.setTextColor(selectedItem == position ? Color.WHITE : Color.BLACK);
         holder.itemView.setSelected(selectedItem == position ? true : false);
     }
 
@@ -52,6 +65,22 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.MonthHolder>
 
     public void setLocale(Locale locale) {
         months = new DateFormatSymbols(locale).getShortMonths();
+        notifyDataSetChanged();
+    }
+
+    public void setSelectedItem(int index) {
+        if (index < 12 || index > -1) {
+            selectedItem = index;
+            notifyItemChanged(selectedItem);
+        }
+    }
+
+    public void setBackgroundMonth(int color) {
+        this.color = color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
         notifyDataSetChanged();
     }
 
@@ -73,11 +102,16 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.MonthHolder>
 
     class MonthHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        LinearLayout layoutMain;
         TextView textViewMonth;
 
         public MonthHolder(View itemView) {
             super(itemView);
+            layoutMain = (LinearLayout) itemView.findViewById(R.id.main_layout);
             textViewMonth = (TextView) itemView.findViewById(R.id.text_month);
+            if (color != 0)
+                setMonthBackgroundSelected(color);
+
             itemView.setClickable(true);
             itemView.setOnClickListener(this);
         }
@@ -88,6 +122,18 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.MonthHolder>
             selectedItem = getAdapterPosition();
             notifyItemChanged(selectedItem);
             listener.onContentSelected();
+        }
+
+        private void setMonthBackgroundSelected(int color) {
+            LayerDrawable layerDrawable = (LayerDrawable) ContextCompat.getDrawable(context, R.drawable.month_selected);
+            GradientDrawable gradientDrawable = (GradientDrawable) layerDrawable.getDrawable(1);
+            gradientDrawable.setColor(ContextCompat.getColor(context, color));
+            layerDrawable.setDrawableByLayerId(1, gradientDrawable);
+
+            StateListDrawable states = new StateListDrawable();
+            states.addState(new int[]{android.R.attr.state_selected}, gradientDrawable);
+            states.addState(new int[]{}, ContextCompat.getDrawable(context, R.drawable.month_default));
+            layoutMain.setBackground(states);
         }
     }
 

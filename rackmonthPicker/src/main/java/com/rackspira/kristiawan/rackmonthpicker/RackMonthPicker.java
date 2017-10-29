@@ -1,7 +1,11 @@
 package com.rackspira.kristiawan.rackmonthpicker;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.rackspira.kristiawan.rackmonthpicker.listener.DateMonthDialogListener;
@@ -74,6 +79,16 @@ public class RackMonthPicker {
         return this;
     }
 
+    public RackMonthPicker setSelectedMonth(int index) {
+        builder.setSelectedMonth(index);
+        return this;
+    }
+
+    public RackMonthPicker setColorTheme(int color) {
+        builder.setColorTheme(color);
+        return this;
+    }
+
     public void dismiss() {
         mAlertDialog.dismiss();
     }
@@ -121,6 +136,19 @@ public class RackMonthPicker {
 
         public void setLocale(Locale locale) {
             monthAdapter.setLocale(locale);
+        }
+
+        public void setSelectedMonth(int index) {
+            monthAdapter.setSelectedItem(index);
+        }
+
+        public void setColorTheme(int color){
+            LinearLayout linearToolbar = (LinearLayout) contentView.findViewById(R.id.linear_toolbar);
+            linearToolbar.setBackgroundResource(color);
+
+            monthAdapter.setBackgroundMonth(color);
+            mPositiveButton.setTextColor(ContextCompat.getColor(context, color));
+            mNegativeButton.setTextColor(ContextCompat.getColor(context, color));
         }
 
         public void build() {

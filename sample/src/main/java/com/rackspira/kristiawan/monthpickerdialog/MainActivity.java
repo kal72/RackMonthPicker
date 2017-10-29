@@ -21,6 +21,8 @@ public class MainActivity extends Activity {
 
         final RackMonthPicker rackMonthPicker = new RackMonthPicker(this)
                 .setLocale(Locale.ENGLISH)
+                .setSelectedMonth(4)
+                .setColorTheme(R.color.colorPrimary)
                 .setPositiveButton(new DateMonthDialogListener() {
                     @Override
                     public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {
@@ -51,7 +53,7 @@ public class MainActivity extends Activity {
 //                    }
 //                }).show();
 
-        Button button = (Button)findViewById(R.id.btn_show);
+        Button button = (Button) findViewById(R.id.btn_show);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
