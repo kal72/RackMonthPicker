@@ -63,8 +63,10 @@ How to use :
                 }
           }).show();
 ```
-adding .setPositiveText(String text) or .setNegativeText(String Text) to change the text of a button.
-adding .setLocale(Locale.ENGLISH) to change language.
+adding .setPositiveText(String text) or .setNegativeText(String Text) to change the text of a button.<br />
+adding .setLocale(Locale.ENGLISH) to change language.<br />
+adding .setColorTheme(R.color.primary) to change color theme.<br />
+adding .setSelectedMonth(4) to change default month selected.
 
 Once the dialog is shown, you can dismiss it:
 ```java
