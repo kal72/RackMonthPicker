@@ -1,10 +1,7 @@
 package com.rackspira.kristiawan.rackmonthpicker;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
@@ -111,7 +108,6 @@ public class RackMonthPicker {
 
             mTitleView = (TextView) contentView.findViewById(R.id.title);
             mYear = (TextView) contentView.findViewById(R.id.text_year);
-            mYear.setText(year + "");
 
             Button next = (Button) contentView.findViewById(R.id.btn_next);
             next.setOnClickListener(nextButtonClick());
@@ -132,6 +128,9 @@ public class RackMonthPicker {
             recyclerView.setLayoutManager(new GridLayoutManager(context, 4));
             recyclerView.setHasFixedSize(true);
             recyclerView.setAdapter(monthAdapter);
+
+            mTitleView.setText(monthAdapter.getShortMonth() + ", " + year);
+            mYear.setText(year + "");
         }
 
         public void setLocale(Locale locale) {
@@ -168,7 +167,7 @@ public class RackMonthPicker {
                 public void onClick(View view) {
                     year++;
                     mYear.setText(year + "");
-                    mTitleView.setText(monthAdapter.getMonth() + ", " + year);
+                    mTitleView.setText(monthAdapter.getShortMonth() + ", " + year);
                 }
             };
         }
@@ -179,7 +178,7 @@ public class RackMonthPicker {
                 public void onClick(View view) {
                     year--;
                     mYear.setText(year + "");
-                    mTitleView.setText(monthAdapter.getMonth() + ", " + year);
+                    mTitleView.setText(monthAdapter.getShortMonth() + ", " + year);
                 }
             };
         }
@@ -210,7 +209,7 @@ public class RackMonthPicker {
 
         @Override
         public void onContentSelected() {
-            mTitleView.setText(monthAdapter.getMonth() + ", " + year);
+            mTitleView.setText(monthAdapter.getShortMonth() + ", " + year);
         }
     }
 }
