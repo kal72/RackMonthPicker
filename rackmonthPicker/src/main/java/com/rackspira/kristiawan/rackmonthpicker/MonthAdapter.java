@@ -1,12 +1,10 @@
 package com.rackspira.kristiawan.rackmonthpicker;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.StateListDrawable;
-import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -98,6 +96,10 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.MonthHolder>
         cal.set(Calendar.DAY_OF_MONTH, selectedItem + 1);
         int maxDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
         return maxDay;
+    }
+
+    public String getShortMonth() {
+        return months[selectedItem];
     }
 
     class MonthHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
