@@ -23,7 +23,7 @@ Add the dependency
 <dependency>
 	    <groupId>com.github.lutvie72</groupId>
 	    <artifactId>rackmonthpicker</artifactId>
-	    <version>1.2</version>
+	    <version>1.4</version>
 </dependency>
 ```
 
@@ -41,7 +41,7 @@ allprojects {
 Add the dependency
 ```groovy
 dependencies {
-	        compile 'com.github.lutvie72:RackMonthPicker:1.2'
+	        compile 'com.github.lutvie72:RackMonthPicker:1.4'
 	}
 ```
 
