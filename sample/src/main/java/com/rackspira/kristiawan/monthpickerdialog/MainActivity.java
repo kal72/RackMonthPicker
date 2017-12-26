@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
         final RackMonthPicker rackMonthPicker = new RackMonthPicker(this)
                 .setLocale(Locale.ENGLISH)
                 .setSelectedMonth(4)
+                .setSelectedYear(2018)
                 .setColorTheme(R.color.colorPrimary)
                 .setPositiveButton(new DateMonthDialogListener() {
                     @Override

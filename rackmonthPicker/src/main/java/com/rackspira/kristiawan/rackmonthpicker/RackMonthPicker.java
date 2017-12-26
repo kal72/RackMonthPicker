@@ -81,6 +81,11 @@ public class RackMonthPicker {
         return this;
     }
 
+    public RackMonthPicker setSelectedYear(int year) {
+        builder.setSelectedYear(year);
+        return this;
+    }
+
     public RackMonthPicker setColorTheme(int color) {
         builder.setColorTheme(color);
         return this;
@@ -139,9 +144,16 @@ public class RackMonthPicker {
 
         public void setSelectedMonth(int index) {
             monthAdapter.setSelectedItem(index);
+            mTitleView.setText(monthAdapter.getShortMonth() + ", " + year);
         }
 
-        public void setColorTheme(int color){
+        public void setSelectedYear(int year) {
+            this.year = year;
+            mYear.setText(year + "");
+            mTitleView.setText(monthAdapter.getShortMonth() + ", " + year);
+        }
+
+        public void setColorTheme(int color) {
             LinearLayout linearToolbar = (LinearLayout) contentView.findViewById(R.id.linear_toolbar);
             linearToolbar.setBackgroundResource(color);
 
