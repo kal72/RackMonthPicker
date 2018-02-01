@@ -100,7 +100,7 @@ public class RackMonthPicker {
         private MonthAdapter monthAdapter;
         private TextView mTitleView;
         private TextView mYear;
-        private int year = 2017;
+        private int year = 2018;
         private AlertDialog.Builder alertBuilder;
         private View contentView;
 
