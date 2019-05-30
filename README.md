@@ -12,18 +12,18 @@ Download via Maven:
 Add the JitPack repository to your build file
 ```xml
 <repositories>
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
-	</repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
 ```
 Add the dependency
 ```xml
 <dependency>
-	    <groupId>com.github.lutvie72</groupId>
-	    <artifactId>rackmonthpicker</artifactId>
-	    <version>1.4</version>
+        <groupId>com.github.kal72</groupId>
+        <artifactId>RackMonthPicker</artifactId>
+        <version>1.5.2</version>
 </dependency>
 ```
 
@@ -32,17 +32,17 @@ via Gradle:
 Add it in your root build.gradle at the end of repositories
 ```groovy
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
 ```
 Add the dependency
 ```groovy
 dependencies {
-	        compile 'com.github.lutvie72:RackMonthPicker:1.4'
-	}
+        implementation 'com.github.kal72:RackMonthPicker:1.5.2'
+}
 ```
 
 How to use :
