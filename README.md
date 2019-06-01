@@ -76,3 +76,7 @@ RackMonthPicker rackMonthPicker = new RackMonthPicker(this)
 
 rackMonthPicker.dismiss();
 ```
+
+## Contributing
+
+Contributions are welcome!
