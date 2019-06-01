@@ -23,7 +23,7 @@ Add the dependency
 <dependency>
         <groupId>com.github.kal72</groupId>
         <artifactId>RackMonthPicker</artifactId>
-        <version>1.5.2</version>
+        <version>1.6.0</version>
 </dependency>
 ```
 
@@ -41,7 +41,7 @@ allprojects {
 Add the dependency
 ```groovy
 dependencies {
-        implementation 'com.github.kal72:RackMonthPicker:1.5.2'
+        implementation 'com.github.kal72:RackMonthPicker:1.6.0'
 }
 ```
 
@@ -67,6 +67,7 @@ adding .setPositiveText(String text) or .setNegativeText(String Text) to change 
 adding .setLocale(Locale.ENGLISH) to change language.<br />
 adding .setColorTheme(R.color.primary) to change color theme.<br />
 adding .setSelectedMonth(4) to change default month selected.
+adding .setMonthType(MonthType) to show month by text or number.
 
 Once the dialog is shown, you can dismiss it:
 ```java
