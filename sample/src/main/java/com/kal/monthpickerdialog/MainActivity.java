@@ -6,6 +6,7 @@ import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 
+import com.kal.rackmonthpicker.MonthType;
 import com.kal.rackmonthpicker.RackMonthPicker;
 import com.kal.rackmonthpicker.listener.DateMonthDialogListener;
 import com.kal.rackmonthpicker.listener.OnCancelMonthDialogListener;
@@ -20,7 +21,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         final RackMonthPicker rackMonthPicker = new RackMonthPicker(this)
-                .setLocale(Locale.JAPANESE)
+                .setMonthType(MonthType.NUMBER)
                 .setPositiveButton(new DateMonthDialogListener() {
                     @Override
                     public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {

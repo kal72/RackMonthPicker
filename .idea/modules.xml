@@ -3,10 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RackMonthPicker.iml" filepath="$PROJECT_DIR$/RackMonthPicker.iml" />
-      <module fileurl="file://$PROJECT_DIR$/RackMonthPicker.iml" filepath="$PROJECT_DIR$/RackMonthPicker.iml" />
       <module fileurl="file://$PROJECT_DIR$/rackmonthPicker/rackmonthPicker.iml" filepath="$PROJECT_DIR$/rackmonthPicker/rackmonthPicker.iml" />
-      <module fileurl="file://$PROJECT_DIR$/rackmonthpicker/rackmonthpicker.iml" filepath="$PROJECT_DIR$/rackmonthpicker/rackmonthpicker.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
     </modules>
   </component>

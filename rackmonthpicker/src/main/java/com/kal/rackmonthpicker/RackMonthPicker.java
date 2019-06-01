@@ -1,5 +1,6 @@
 package com.kal.rackmonthpicker;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -41,6 +42,11 @@ public class RackMonthPicker {
 
     public RackMonthPicker(Context context) {
         this.context = context;
+        builder = new Builder();
+    }
+
+    public RackMonthPicker(Activity activity) {
+        this.context = activity;
         builder = new Builder();
     }
 
@@ -144,6 +150,11 @@ public class RackMonthPicker {
         return this;
     }
 
+    public RackMonthPicker setMonthType(MonthType monthType) {
+        builder.setMonthType(monthType);
+        return this;
+    }
+
     public void dismiss() {
         mAlertDialog.dismiss();
     }
@@ -200,6 +211,7 @@ public class RackMonthPicker {
             return got ? typedValue.data : defaultColor;
         }
 
+        //set default config
         private void setDefault() {
             Date date = new Date();
             Calendar cal = Calendar.getInstance();
@@ -235,6 +247,10 @@ public class RackMonthPicker {
             monthAdapter.setBackgroundMonth(color);
             mPositiveButton.setTextColor(color);
             mNegativeButton.setTextColor(color);
+        }
+
+        public void setMonthType(MonthType monthType){
+            monthAdapter.setMonthType(monthType);
         }
 
         public void build() {

@@ -27,11 +27,13 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.MonthHolder>
     private int selectedItem = -1;
     private Context context;
     private int color;
+    private MonthType monthType;
 
     public MonthAdapter(Context context, OnSelectedListener listener) {
         this.context = context;
         this.listener = listener;
         months = new DateFormatSymbols(Locale.ENGLISH).getShortMonths();
+        monthType = MonthType.TEXT;
     }
 
     @Override
@@ -42,7 +44,12 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.MonthHolder>
 
     @Override
     public void onBindViewHolder(MonthHolder holder, int position) {
-        holder.textViewMonth.setText(months[position]);
+        if (monthType == MonthType.NUMBER) {
+            holder.textViewMonth.setText((position + 1) + "");
+        } else {
+            holder.textViewMonth.setText(months[position]);
+        }
+
 //        holder.textViewMonth.setTextColor(selectedItem == position ? Color.WHITE : Color.BLACK);
         holder.itemView.setSelected(selectedItem == position ? true : false);
     }
@@ -54,11 +61,16 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.MonthHolder>
 
     /**
      * change format by localization
+     *
      * @param locale
      */
     public void setLocale(Locale locale) {
         months = new DateFormatSymbols(locale).getShortMonths();
         notifyDataSetChanged();
+    }
+
+    public void setMonthType(MonthType monthType) {
+        this.monthType = monthType;
     }
 
     public void setSelectedItem(int index) {
@@ -94,7 +106,11 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.MonthHolder>
     }
 
     public String getShortMonth() {
-        return months[selectedItem];
+        if (monthType == MonthType.NUMBER) {
+            return (selectedItem + 1) + "";
+        } else {
+            return months[selectedItem];
+        }
     }
 
     class MonthHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
