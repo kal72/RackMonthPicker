@@ -2,7 +2,7 @@ package com.kal.monthpickerdialog;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 
@@ -10,8 +10,6 @@ import com.kal.rackmonthpicker.MonthType;
 import com.kal.rackmonthpicker.RackMonthPicker;
 import com.kal.rackmonthpicker.listener.DateMonthDialogListener;
 import com.kal.rackmonthpicker.listener.OnCancelMonthDialogListener;
-
-import java.util.Locale;
 
 public class MainActivity extends Activity {
 

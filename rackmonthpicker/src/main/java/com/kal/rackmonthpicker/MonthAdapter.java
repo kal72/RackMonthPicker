@@ -4,8 +4,8 @@ import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.StateListDrawable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.RecyclerView;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -99,7 +99,7 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.MonthHolder>
 
     public int getEndDate() {
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.MONTH, selectedItem + 1);
+        cal.set(Calendar.MONTH, selectedItem );
         cal.set(Calendar.DAY_OF_MONTH, selectedItem + 1);
         int maxDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
         return maxDay;
@@ -120,8 +120,8 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.MonthHolder>
 
         public MonthHolder(View itemView) {
             super(itemView);
-            layoutMain = (LinearLayout) itemView.findViewById(R.id.main_layout);
-            textViewMonth = (TextView) itemView.findViewById(R.id.text_month);
+            layoutMain = itemView.findViewById(R.id.main_layout);
+            textViewMonth =  itemView.findViewById(R.id.text_month);
             if (color != 0)
                 setMonthBackgroundSelected(color);
 

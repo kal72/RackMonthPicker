@@ -31,12 +31,12 @@
                 android:orientation="horizontal"
                 android:padding="16dp">
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
-                    android:text="Month Picker"
+                    android:text="@string/month_picker"
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -62,13 +62,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp">
 
-                        <ImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/btn_previous"
                             android:layout_width="60dp"
                             android:layout_height="25dp"
                             android:src="@drawable/back" />
 
-                        <ImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/btn_next"
                             android:layout_width="60dp"
                             android:layout_height="25dp"
@@ -77,19 +77,19 @@
                             android:layout_alignParentTop="true"
                             android:src="@drawable/forward" />
 
-                        <TextView
+                        <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/text_year"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
                             android:fontFamily="sans-serif"
-                            android:text="2016"
+                            tools:text="2016"
                             android:textColor="@color/black_de"
                             android:textSize="18sp" />
                     </RelativeLayout>
 
-                    <android.support.v7.widget.RecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recycler_view"
                         android:paddingRight="24dp"
                         android:paddingLeft="24dp"
@@ -97,7 +97,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
-                    </android.support.v7.widget.RecyclerView>
+                    </androidx.recyclerview.widget.RecyclerView>
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>
@@ -111,28 +111,26 @@
             android:paddingBottom="10dp"
             android:paddingTop="16dp">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_n"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:fontFamily="sans-serif"
                 android:padding="10dp"
                 android:stateListAnimator="@null"
-                android:text="CANCEL"
-                android:textColor="@color/color_primary" />
+                android:text="@string/cancel" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_p"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
-                android:background="@drawable/button"
                 android:fontFamily="sans-serif"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:padding="10dp"
                 android:stateListAnimator="@null"
-                android:text="OK"
-                android:textColor="@color/color_primary" />
+                android:text="@string/ok"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
