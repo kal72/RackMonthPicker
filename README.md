@@ -23,7 +23,7 @@ Add the dependency
 <dependency>
         <groupId>com.github.kal72</groupId>
         <artifactId>RackMonthPicker</artifactId>
-        <version>1.6.0</version>
+        <version>1.6.1</version>
 </dependency>
 ```
 
@@ -41,7 +41,7 @@ allprojects {
 Add the dependency
 ```groovy
 dependencies {
-        implementation 'com.github.kal72:RackMonthPicker:1.6.0'
+        implementation 'com.github.kal72:RackMonthPicker:1.6.1'
 }
 ```
 
