@@ -1,7 +1,7 @@
 # RackMonthPicker
 android library dialog month picker
 
-[![](https://jitpack.io/v/lutvie72/rackmonthpicker.svg)](https://jitpack.io/#lutvie72/rackmonthpicker)
+[![](https://jitpack.io/v/kal72/RackMonthPicker.svg)](https://jitpack.io/#kal72/RackMonthPicker)
 
 ![Screenshots](https://raw.githubusercontent.com/lutvie72/RackMonthPicker/master/photo_2017-01-02_08-51-23.jpg)
 
