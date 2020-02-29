@@ -1,6 +1,6 @@
 package com.kal.rackmonthpicker.listener;
 
-import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 
 /**
  * Created by kristiawan on 31/12/16.
