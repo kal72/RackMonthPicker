@@ -113,7 +113,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_n"
-                style="@style/Widget.AppCompat.Button.Colored"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
@@ -123,7 +123,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_p"
-                style="@style/Widget.AppCompat.Button.Colored"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
