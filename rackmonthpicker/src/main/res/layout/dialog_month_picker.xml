@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
                     android:text="@string/month_picker"
-                    android:textColor="?attr/colorBackgroundFloating"
+                    android:textColor="@color/rack_month_picker_title_text_color"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 

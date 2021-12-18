@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:color="?attr/colorBackgroundFloating" android:state_selected="true" />
-    <item android:color="?attr/colorBackgroundFloating" android:state_pressed="true" />
-    <item android:color="?attr/textColorAlertDialogListItem" />
+    <item android:color="@color/rack_month_picker_month_selected_text_color" android:state_selected="true" />
+    <item android:color="@color/rack_month_picker_month_selected_text_color" android:state_pressed="true" />
+    <item android:color="@color/rack_month_picker_month_not_selected_text_color" />
 </selector>

@@ -8,4 +8,11 @@
     <color name="black_de">#DE000000</color>
     <color name="color_primary">#009B4C</color>
     <color name="transparent">#00000000</color>
+
+    <!-- Items can be overridden later from the library -->
+    <color name="rack_month_picker_title_text_color">@color/white</color>
+    <color name="rack_month_picker_month_selected_text_color">@color/white</color>
+    <color name="rack_month_picker_month_not_selected_text_color">
+        ?attr/textColorAlertDialogListItem
+    </color>
 </resources>
